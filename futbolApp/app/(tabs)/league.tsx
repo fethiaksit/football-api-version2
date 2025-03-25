@@ -8,7 +8,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.1.164:8081/api/superlig', {
+        const response = await fetch('http://192.168.1.164:8081/api/matches', {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Maçlar</Text>
+      <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Ligler</Text>
 
       {errorMessage ? (
         <Text style={{ color: 'red' }}>{errorMessage}</Text>
@@ -49,9 +49,7 @@ const App = () => {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
             <View style={{ marginVertical: 10 }}>
-              <Text style={{ fontWeight: 'bold' }}>{item.home} vs {item.away}</Text>
-              <Text>Skor: {item.skor}</Text>
-              <Text>Tarih: {new Date(item.date).toLocaleString()}</Text>
+              <Text> {item.league}</Text>
             </View>
           )}
         />

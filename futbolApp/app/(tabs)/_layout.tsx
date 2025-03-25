@@ -36,16 +36,17 @@ export default function TabLayout() {
         name="match"
         options={{
           title: 'Maçlar',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="soccerball" color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="explore"
+             <Tabs.Screen
+        name="league"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Lig',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="figure.soccer" color={color} />,
         }}
       />
+   
     </Tabs>
   );
 }
