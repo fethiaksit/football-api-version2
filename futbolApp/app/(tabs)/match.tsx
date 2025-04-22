@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
 interface Match {
-  home: string;
-  away: string;
-  skor: string;
-  date: string;
+  team1: string;
+  team2: string;
+  score1: string;
+  score2: string;
 }
 
 const App = () => {
@@ -15,11 +15,10 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.1.164:8081/api/superlig', {
+        const response = await fetch('http://localhost:8080/matches', {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'X-API-Key': '5lh280zbxpz265bVaRpqEu:50SxWSCbug7vJaQswNQQbc',
           }
         });
 
@@ -38,32 +37,23 @@ const App = () => {
     fetchData();
   }, []);
 
+
+
   const renderItem = ({ item }: { item: Match }) => (
     <View style={styles.card}>
       <View style={styles.teamsContainer}>
-        <Text style={styles.teamName}>{item.home}</Text>
+        <Text style={styles.teamName}>{item.team1}</Text>
         <View style={styles.scoreContainer}>
-          <Text style={styles.score}>{item.skor}</Text>
+          <Text style={styles.score}>{`${item.score1}-${item.score2}`}</Text>
         </View>
-        <Text style={styles.teamName}>{item.away}</Text>
+        <Text style={styles.teamName}>{item.team2}</Text>
       </View>
-      <View style={styles.dateContainer}>
-        <Text style={styles.dateText}>
-          {new Date(item.date).toLocaleDateString('tr-TR', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-          })}
-        </Text>
       </View>
-    </View>
   );
-
+  
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Süper Lig Maçları</Text>
+      <Text style={styles.header}>Trendyol 1. Lig 2024-2025 Sezonu Fikstürü </Text>
 
       {errorMessage ? (
         <Text style={styles.errorText}>{errorMessage}</Text>

@@ -43,12 +43,8 @@ const App = () => {
     const fetchLeagues = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('http://192.168.1.164:8081/api/matches', {
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'X-API-Key': '5lh280zbxpz265bVaRpqEu:50SxWSCbug7vJaQswNQQbc',  // X-API-Key başlığını kullanıyoruz
-          }
+        const response = await fetch('http://localhost:8080/matches', {
+
         });
 
         // Yanıtı ham metin olarak al
